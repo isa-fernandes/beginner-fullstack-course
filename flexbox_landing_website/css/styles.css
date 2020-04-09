@@ -113,6 +113,44 @@ header {
     margin-top: 0;
 }
 
+.quote-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.quote-btn {
+    color: #FFF;
+    background-color: #66B6D3;
+    font-size: 18px;
+    border: none;
+    padding: .8rem 4rem;
+    border-radius: 3px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+}
+
+.section-header {
+    text-align: center;
+    padding: 6rem 0 4rem;
+}
+
+.portfolio-wrapper {
+    display: flex;
+    max-width: 250px;
+}
+
+.portfolio-box {
+    width: 250px;
+    height: 250px;
+    background-color: #F1F3Fa;
+    transition: .2s ease-in-out;
+}
+
+.portfolio-box:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
 @media(max-width: 768px) {
     ul.topnav li a.nav-link {
         display: none;
