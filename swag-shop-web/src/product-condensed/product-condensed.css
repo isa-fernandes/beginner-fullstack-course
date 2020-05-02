@@ -1,0 +1,7 @@
+.pc-condensed {
+    display: flex;
+}
+
+.pc-condensed a {
+    margin-right: 25px;
+}

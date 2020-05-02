@@ -8,6 +8,14 @@ var db = mongoose.connect('mongodb+srv://admin:admin@mycluster-hbggp.mongodb.net
 var Product = require('./model/product');
 var WishList = require('./model/wishlist');
 
+//Allow all requests from all domains & localhost
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "POST, GET");
+  next();
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
@@ -29,6 +37,16 @@ app.post('/product', function(request, response) {
             response.status(500).send({error:"Could not save product"});
         } else {
             response.send(savedProduct);
+        }
+    });
+});
+
+app.put('/product', function(request, response) {
+    Product.updateOne({_id:request.body._id}, {$set: request.body}, function (err, wishList) {
+        if (err) {
+            response.status(500).send({error: "Could not update product"});
+        } else {
+            response.send("Successfully updated the product");
         }
     });
 });
@@ -71,6 +89,6 @@ app.put('/wishlist/product/add', function(request, response) {
     });
 });
 
-app.listen(3000, function() {
-    console.log("Swag Shop API running on port 3000...");
+app.listen(3004, function() {
+    console.log("Swag Shop API running on port 3004...");
 });
